@@ -1,0 +1,4 @@
+name = "ChunkedArrayBase"
+uuid = "816d2fc6-9f13-11e9-18ca-dfb085bbf819"
+authors = ["Fabian Gans <fgans@bgc-jena.mpg.de>"]
+version = "0.1.0"
