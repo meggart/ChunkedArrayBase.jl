@@ -14,7 +14,7 @@ would return an iterator over the indices of each chunk. Below is a short (execu
 
 ## 1. Implement the interface for different backends
 
-This is usually just a line of code and would have to be done inside the individual packages
+This is usually just a line of code and would have to be done inside the individual packages. For chunked arrays with constant (regular) chunk sizes there is a basic implementation of such an iterator defined in this package. So you only need to define:
 
 
 ```julia
@@ -34,6 +34,8 @@ ChunkedArrayBase.eachchunk(a::DistributedArrays.DArray) = ChunkedArrayBase.GridC
 import NetCDF
 ChunkedArrayBase.eachchunk(a::NetCDF.NcVar) = ChunkedArrayBase.GridChunks(a, map(Int64,a.chunksize))
 ```
+
+This enables us to do some nice stuff, for example:
 
 ### Example 1: Copy a HDF5 file to Zarr chunk by chunk
 
