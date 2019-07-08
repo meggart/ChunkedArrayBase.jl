@@ -13,6 +13,9 @@ struct GridChunks{N}
     chunkgridsize::NTuple{N,Int}
 end
 GridChunks(a, chunksize) = GridChunks(size(a), chunksize, map(fld1,size(a),chunksize))
+function Base.show(io::IO, g::GridChunks)
+  print(io,"Regular ",join(g.chunksize,"x")," chunks over a ", join(g.parentsize,"x"), " array.")
+end
 Base.size(g::GridChunks) = g.chunkgridsize
 Base.size(g::GridChunks, dim) = g.chunkgridsize[dim]
 Base.IteratorSize(::Type{GridChunks{N}}) where N = Base.HasShape{N}()
